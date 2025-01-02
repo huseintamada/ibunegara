@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Iremía</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="background-audio" autoplay loop hidden>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="slider">
+        <div class="slides">
+            <div class="slide" id="slide1">
+                <div class="balloon-container">
+                    <div class="balloon" style="background-color: #ff6961;"></div>
+                    <div class="balloon" style="background-color: #77dd77;"></div>
+                    <div class="balloon" style="background-color: #fdfd96;"></div>
+                    <div class="balloon" style="background-color: #84b6f4;"></div>
+                    <div class="balloon" style="background-color: #ffb347;"></div>
+                </div>
+
+                <canvas id="fireworksCanvas"></canvas>
+                <img src="slide1.jpg" alt="Us Together" class="photo">
+                <div class="text-box">
+                    <h2>This is my girl and this favorite girl</h2>
+                    <p>I really love this pretty girl</p>
+                </div>
+            </div>
+
+            <div class="slide" id="slide2">
+                <div class="balloon-container">
+                    <div class="balloon" style="background-color: #ff6961;"></div>
+                    <div class="balloon" style="background-color: #77dd77;"></div>
+                    <div class="balloon" style="background-color: #fdfd96;"></div>
+                    <div class="balloon" style="background-color: #84b6f4;"></div>
+                    <div class="balloon" style="background-color: #ffb347;"></div>
+                </div>
+                <img src="slide2.JPG" alt="Memories" class="photo">
+                <div class="text-box">
+                    <h2>She called me Bathara</h2>
+                    <p>I'm happy he called me Bathara, I think it's the nicest name I've ever heard.</p>
+                </div>
+            </div>
+
+            <div class="slide" id="slide3">
+                <div class="balloon-container">
+                    <div class="balloon" style="background-color: #ff6961;"></div>
+                    <div class="balloon" style="background-color: #77dd77;"></div>
+                    <div class="balloon" style="background-color: #fdfd96;"></div>
+                    <div class="balloon" style="background-color: #84b6f4;"></div>
+                    <div class="balloon" style="background-color: #ffb347;"></div>
+                </div>
+                <img src="slide3.jpg" alt="Invitation" class="photo">
+                <div class="text-box">
+                    <h2>She a great person</h2>
+                    <p>Even though in front of other people he is strong, but in front of me he is so spoiled.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            var canvas = document.getElementById('fireworksCanvas');
+            var ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            var fireworks = [];
+
+            function random(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            function createFirework() {
+                return {
+                    x: random(0, canvas.width),
+                    y: canvas.height,
+                    speedX: random(-1.5, 1.5),
+                    speedY: random(-10, -6),
+                    radius: random(3, 5),
+                    alpha: 1,
+                    color: 'hsl(' + random(0, 360) + ', 100%, 50%)'
+                };
+            }
+
+            function updateFireworks() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                fireworks = fireworks.filter(firework => firework.alpha > 0);
+
+                fireworks.forEach(firework => {
+                    firework.x += firework.speedX;
+                    firework.y += firework.speedY;
+                    firework.alpha -= 0.02;
+
+                    ctx.beginPath();
+                    ctx.arc(firework.x, firework.y, firework.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = firework.color;
+                    ctx.globalAlpha = firework.alpha;
+                    ctx.fill();
+                });
+
+                if (Math.random() < 0.1) {
+                    fireworks.push(createFirework());
+                }
+
+                requestAnimationFrame(updateFireworks);
+            }
+
+            updateFireworks();
+        });
+    </script>
+
+    <!-- Navigation buttons -->
+    <div class="nav-buttons">
+        <a href="#slide1">Slide 1</a>
+        <a href="#slide2">Slide 2</a>
+        <a href="#slide3">Slide 3</a>
+    </div>
+</body>
+</html>

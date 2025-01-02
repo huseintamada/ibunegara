@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login ur website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="login-box">
+            <h1>🌹 Welcome to the website about you 🌹</h1>
+            <p>Enter the name you gave me! (b.....a) in lowercase letters</p>
+            <input type="password" id="password"  placeholder="Enter my name, Hay">
+            <button onclick="checkPassword()">Submit</button>
+            <div id="error-message"></div>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const correctPassword = "bathara"; 
+            const errorMessage = document.getElementById('error-message');
+
+            if (password === correctPassword) {
+                window.location.href = "invitation.html"; 
+            } else {
+                errorMessage.textContent = "Oops! The code is incorrect. Try again!";
+                errorMessage.style.color = "red";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

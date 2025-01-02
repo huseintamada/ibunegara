@@ -1,0 +1,347 @@
+/* Global CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #ffe5e5;
+    background-image: url('birthday-bg.png'); /* Ganti dengan gambar tema ulang tahun */
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Login Page */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 400px;
+}
+
+.login-box h1 {
+    color: #666666;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.login-box p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+input[type="password"] {
+    padding: 10px;
+    font-size: 1.2em;
+    border: 2px solid #666666;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #666666;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ffffff;
+    color: #666666;
+}
+
+#error-message {
+    margin-top: 10px;
+    font-size: 1em;
+    color: red;
+}
+
+.login-box::before {
+    content: "💕";
+    font-size: 3em;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    color: #f47b42;
+}
+
+.login-box::after {
+    content: "💖";
+    font-size: 3em;
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    color: #f47b42;
+}
+
+/* Invitation Page */
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+}
+
+#slide1, #slide2, #slide3 {
+    background-image: url('collage.png'); 
+    background-size: cover; 
+    background-position: center; /* Memposisikan gambar di tengah */
+    background-repeat: no-repeat; /* Mencegah gambar diulang */
+    height: 100vh; /* Membuat slide 1 memenuhi layar */
+    width: 100vw;
+    position: relative;
+}
+
+.balloon-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -150px;
+    width: 60px;
+    height: 80px;
+    background-color: #ff6b6b;
+    border-radius: 50%;
+    animation: floatUp 8s infinite ease-in-out;
+    opacity: 0.8;
+}
+
+.balloon:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.balloon:nth-child(2) {
+    left: 30%;
+    animation-delay: 2s;
+}
+
+.balloon:nth-child(3) {
+    left: 50%;
+    animation-delay: 4s;
+}
+
+.balloon:nth-child(4) {
+    left: 70%;
+    animation-delay: 1s;
+}
+
+.balloon:nth-child(5) {
+    left: 90%;
+    animation-delay: 3s;
+}
+
+@keyframes floatUp {
+    0% {
+        bottom: -150px;
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(20px);
+    }
+    100% {
+        bottom: 100%;
+        transform: translateX(-20px);
+    }
+}
+
+/* Kembang api */
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+.photo {
+    width: 40%;
+    max-height: 60%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.text-box {
+    position: absolute;
+    bottom: 20%;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 70%;
+}
+
+.text-box h1, .text-box h2 {
+    color: #333;
+}
+
+.text-box p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+.nav-buttons {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-buttons a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #666666;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-buttons a:hover {
+    background-color: #ffffff;
+    color: #666666;
+}
+
+body::before, body::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-image: url('floral-design.png'); /* Ganti dengan desain bunga */
+    background-size: contain;
+    opacity: 0.5;
+}
+
+/* Media Query untuk layar kecil (ponsel) */
+@media (max-width: 600px) {
+    body {
+        font-size: 1em; /* Memperbesar font menjadi lebih mudah dibaca */
+        background-size: cover; /* Pastikan background tetap menyesuaikan layar */
+        padding: 10px;
+    }
+
+    .login-box {
+        padding: 20px;
+        width: 90%;
+        margin: 0 auto;
+        font-size: small;
+    }
+
+    .login-box p {
+        font-size: 1.5em;
+    }
+
+    input[type="password"] {
+        font-size: 1em;
+        padding: 8px;
+    }
+
+    button {
+        font-size: 1em;
+        padding: 8px 15px;
+    }
+
+    .text-box {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .photo {
+        width: 70%;
+        max-height: 50%;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: center; /* Menjaga tombol agar sejajar di tengah */
+        gap: 10px;
+    }
+
+    .nav-buttons a {
+        font-size: 1em;
+        padding: 8px 15px;
+        text-align: center;
+        width: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 1em;
+    }
+
+    .login-box {
+        width: 80%;
+    }
+
+    .text-box {
+        padding: 18px;
+        max-width: 80%;
+    }
+
+    .photo {
+        width: 50%;
+        max-height: 60%;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: center; /* Menjaga tombol agar sejajar di tengah */
+        gap: 10px;
+    }
+    
+    .nav-buttons a {
+        font-size: 1em;
+        padding: 10px 20px;
+        text-align: center;
+        width: auto;
+    }
+}
